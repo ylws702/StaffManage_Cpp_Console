@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StaffManage_Cpp_Console", "StaffManage_Cpp_Console\StaffManage_Cpp_Console.vcxproj", "{FF6CF577-933C-407F-8BD6-FCD1955B231D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Debug|x64.ActiveCfg = Debug|x64
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Debug|x64.Build.0 = Debug|x64
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Debug|x86.ActiveCfg = Debug|Win32
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Debug|x86.Build.0 = Debug|Win32
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Release|x64.ActiveCfg = Release|x64
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Release|x64.Build.0 = Release|x64
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Release|x86.ActiveCfg = Release|Win32
+		{FF6CF577-933C-407F-8BD6-FCD1955B231D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEBA97F2-ECC8-4F38-B2B0-128396D0555A}
+	EndGlobalSection
+EndGlobal
