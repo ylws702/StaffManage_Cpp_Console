@@ -5,6 +5,7 @@ using namespace std;
 
 class Staff
 {
+    friend class StaffInfo;
     friend class StaffList;
 public:
     Staff();
@@ -25,6 +26,7 @@ protected:
 class Salesman
     :virtual public Staff
 {
+    friend class StaffInfo;
     friend class StaffList;
 public:
     Salesman();
@@ -32,17 +34,18 @@ public:
     void SetInfo();
     void PrintInfo()const;
     string GetMajor()const;
-    string GetTitle()const;
+    double GetSales()const;
     bool operator==(const Salesman &s)const;
     bool operator!=(const Salesman &s)const;
 protected:
     string major;
-    string title;
+    double sales;
 };
 
 class Manager
     :virtual public Staff
 {
+    friend class StaffInfo;
     friend class StaffList;
 public:
     Manager();
@@ -50,22 +53,26 @@ public:
     void SetInfo();
     void PrintInfo()const;
     string GetDepartment()const;
-    string GetJob()const;
+    string GetLevel()const;
     bool operator==(const Manager &m)const;
     bool operator!=(const Manager &m)const;
 protected:
     string department;
-    string job;
+    string level;
 };
 class SalesManager :
     public Salesman, public Manager
 {
+    friend class StaffInfo;
     friend class StaffList;
 public:
     SalesManager();
     ~SalesManager();
     void SetInfo();
     void PrintInfo()const;
+    double GetTotalSales()const;
     bool operator==(const SalesManager &sm)const;
     bool operator!=(const SalesManager &sm)const;
+private:
+    double totalSales;
 };

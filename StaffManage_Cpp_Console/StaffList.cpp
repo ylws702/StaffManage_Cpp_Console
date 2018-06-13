@@ -13,44 +13,40 @@ StaffList::~StaffList()
 
 void StaffList::Insert(const Staff & staff)
 {
-    Staff* p = new Staff(staff);
-    staffMap.insert(
-        pair<string, pair<Staff*, StaffType>>(
-            p->id,
-            pair<Staff*, StaffType>(p, TStaff)
-            )
-    );
+    string id(staff.id);
+    StaffInfo info(staff);
+    staffMap.insert(pair<string, StaffInfo>(id, info));
 }
 
 void StaffList::Insert(const Salesman & salesman)
 {
-    Salesman* p = new Salesman(salesman);
-    staffMap.insert(
-        pair<string, pair<Staff*, StaffType>>(
-            p->id,
-            pair<Staff*, StaffType>(p, TSalesman)
-            )
-    );
+    string id(salesman.id);
+    StaffInfo info(salesman);
+    staffMap.insert(pair<string, StaffInfo>(id, info));
 }
 
 void StaffList::Insert(const Manager & manager)
 {
-    Manager* p = new Manager(manager);
-    staffMap.insert(
-        pair<string, pair<Staff*, StaffType>>(
-            p->id,
-            pair<Staff*, StaffType>(p, TManager)
-            )
-    );
+    string id(manager.id);
+    StaffInfo info(manager);
+    staffMap.insert(pair<string, StaffInfo>(id, info));
 }
 
 void StaffList::Insert(const SalesManager & salesManager)
 {
-    SalesManager* p = new SalesManager(salesManager);
-    staffMap.insert(
-        pair<string, pair<Staff*, StaffType>>(
-            p->id,
-            pair<Staff*, StaffType>(p, TSalesManager)
-            )
-    );
+    string id(salesManager.id);
+    StaffInfo info(salesManager);
+    staffMap.insert(pair<string, StaffInfo>(id, info));
 }
+
+//pair<Staff*, StaffList::StaffType> StaffList::Find(const string & id)
+//{
+//    auto staff = staffMap.find(id);
+//    if (staffMap.end()==staff)
+//    {
+//        return pair<Staff*, StaffList::StaffType>(nullptr,TStaff);
+//    }
+//    *(staff->second.first);
+//    auto p=new Staff
+//    return pair<Staff*, StaffType>();
+//}

@@ -59,7 +59,7 @@ void Salesman::SetInfo()
     cout << "Please enter the major:" << endl;
     cin >> major;
     cout << "Please enter the title:" << endl;
-    cin >> title;
+    cin >> sales;
 }
 
 void Salesman::PrintInfo()const
@@ -74,14 +74,14 @@ string Salesman::GetMajor() const
     return major;
 }
 
-string Salesman::GetTitle() const
+double Salesman::GetSales() const
 {
-    return title;
+    return sales;
 }
 
 inline bool Salesman::operator==(const Salesman & s) const
 {
-    return Staff::operator==(s) && major == s.major&&title == s.title;
+    return Staff::operator==(s) && major == s.major&&sales == s.sales;
 }
 
 inline bool Salesman::operator!=(const Salesman & s) const
@@ -102,26 +102,26 @@ void Manager::SetInfo()
     cout << "Please enter the department:" << endl;
     cin >> department;
     cout << "Please enter the job:" << endl;
-    cin >> job;
+    cin >> level;
 }
 void Manager::PrintInfo()const
 {
     Staff::PrintInfo();
     cout << "Department: " << department << endl;
-    cout << "Job: " << job << endl;
+    cout << "Job: " << level << endl;
 
 }
 string Manager::GetDepartment() const
 {
     return department;
 }
-string Manager::GetJob() const
+string Manager::GetLevel() const
 {
-    return job;
+    return level;
 }
 inline bool Manager::operator==(const Manager & m) const
 {
-    return Staff::operator==(m) && department == m.department&&job == m.job;
+    return Staff::operator==(m) && department == m.department&&level == m.level;
 }
 inline bool Manager::operator!=(const Manager & m) const
 {
@@ -140,18 +140,23 @@ void SalesManager::SetInfo()
     cout << "Please enter the department:" << endl;
     cin >> department;
     cout << "Please enter the job:" << endl;
-    cin >> job;
+    cin >> level;
 }
 void SalesManager::PrintInfo()const
 {
     Salesman::PrintInfo();
     cout << "Department: " << department << endl;
-    cout << "Job: " << job << endl;
+    cout << "Job: " << level << endl;
+}
+
+double SalesManager::GetTotalSales() const
+{
+    return totalSales;
 }
 
 inline bool SalesManager::operator==(const SalesManager & sm) const
 {
-    return Salesman::operator==(sm) && department == sm.department&&job == sm.job;
+    return Salesman::operator==(sm) && department == sm.department&&level == sm.level;
 }
 
 inline bool SalesManager::operator!=(const SalesManager & sm) const

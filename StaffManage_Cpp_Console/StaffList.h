@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "Staff.h"
+#include "StaffInfo.h"
 using namespace std;
 class StaffList
 {
@@ -18,7 +18,8 @@ public:
     void Insert(const Salesman& salesman);
     void Insert(const Manager& manager);
     void Insert(const SalesManager& salesManager);
+    pair<Staff*, StaffType> Find(const string& id);
 private:
-    map<string, pair<Staff*, StaffType>> staffMap;
+    map<string, StaffInfo> staffMap;
 };
 
