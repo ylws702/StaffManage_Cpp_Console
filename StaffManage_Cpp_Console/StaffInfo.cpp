@@ -9,7 +9,8 @@ StaffInfo::StaffInfo()
 StaffInfo::StaffInfo(const Staff & staff):
     id(staff.id),
     name(staff.name),
-    age(staff.age)
+    age(staff.age),
+    type(TStaff)
 {
 }
 
@@ -18,7 +19,8 @@ StaffInfo::StaffInfo(const Salesman & salesman):
     name(salesman.name),
     age(salesman.age),
     major(salesman.major),
-    sales(salesman.sales)
+    sales(salesman.sales),
+    type(TSalesman)
 {
 }
 
@@ -27,7 +29,8 @@ StaffInfo::StaffInfo(const Manager & manger):
     name(manger.name),
     age(manger.age),
     department(manger.department),
-    level(manger.level)
+    level(manger.level),
+    type(TManager)
 {
 }
 
@@ -39,7 +42,8 @@ StaffInfo::StaffInfo(const SalesManager & salesManager):
     sales(salesManager.sales),
     department(salesManager.department),
     level(salesManager.level),
-    totleSales(salesManager.totalSales)
+    totleSales(salesManager.totalSales),
+    type(TSalesManager)
 {
 }
 

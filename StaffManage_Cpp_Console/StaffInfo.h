@@ -9,6 +9,14 @@ public:
     StaffInfo(const Manager& manger);
     StaffInfo(const SalesManager& salesManager);
     ~StaffInfo();
+    enum StaffType
+    {
+        TUnknown,
+        TStaff,
+        TSalesman,
+        TManager,
+        TSalesManager
+    };
     string id;
     string name;
     unsigned short age{ 0 };
@@ -17,5 +25,6 @@ public:
     string department;
     string level;
     double totleSales{ 0.0 };
+    StaffType type{ TUnknown };
 };
 
