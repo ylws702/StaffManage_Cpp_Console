@@ -18,12 +18,6 @@ void Staff::SetInfo()
     cout << "Please enter the age:" << endl;
     cin >> age;
 }
-void Staff::PrintInfo()const
-{
-    cout << "ID: " << id << endl;
-    cout << "Name: " << name << endl;
-    cout << "Age: " << age << endl;
-}
 string Staff::GetName() const
 {
     return name;
@@ -62,13 +56,6 @@ void Salesman::SetInfo()
     cin >> sales;
 }
 
-void Salesman::PrintInfo()const
-{
-    Staff::PrintInfo();
-    cout << "Major: " << major << endl;
-    cout << "Title: " << major << endl;
-}
-
 string Salesman::GetMajor() const
 {
     return major;
@@ -104,13 +91,7 @@ void Manager::SetInfo()
     cout << "Please enter the job:" << endl;
     cin >> level;
 }
-void Manager::PrintInfo()const
-{
-    Staff::PrintInfo();
-    cout << "Department: " << department << endl;
-    cout << "Job: " << level << endl;
 
-}
 string Manager::GetDepartment() const
 {
     return department;
@@ -141,12 +122,6 @@ void SalesManager::SetInfo()
     cin >> department;
     cout << "Please enter the job:" << endl;
     cin >> level;
-}
-void SalesManager::PrintInfo()const
-{
-    Salesman::PrintInfo();
-    cout << "Department: " << department << endl;
-    cout << "Job: " << level << endl;
 }
 
 double SalesManager::GetTotalSales() const

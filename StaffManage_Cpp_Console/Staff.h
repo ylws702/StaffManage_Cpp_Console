@@ -11,7 +11,6 @@ public:
     Staff();
     ~Staff();
     void SetInfo();
-    void PrintInfo() const;
     string GetName()const;
     string GetId()const;
     unsigned short GetAge()const;
@@ -32,7 +31,6 @@ public:
     Salesman();
     ~Salesman();
     void SetInfo();
-    void PrintInfo()const;
     string GetMajor()const;
     double GetSales()const;
     bool operator==(const Salesman &s)const;
@@ -51,7 +49,6 @@ public:
     Manager();
     ~Manager();
     void SetInfo();
-    void PrintInfo()const;
     string GetDepartment()const;
     string GetLevel()const;
     bool operator==(const Manager &m)const;
@@ -69,7 +66,6 @@ public:
     SalesManager();
     ~SalesManager();
     void SetInfo();
-    void PrintInfo()const;
     double GetTotalSales()const;
     bool operator==(const SalesManager &sm)const;
     bool operator!=(const SalesManager &sm)const;

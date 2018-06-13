@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include "Staff.h"
+using namespace std;
 class StaffInfo
 {
     friend class StaffList;
@@ -30,6 +31,8 @@ public:
         StaffType type
     );
     ~StaffInfo();
+    void Print();
+    StaffType type{ TUnknown };
 private:
     string id;
     string name;
@@ -38,7 +41,6 @@ private:
     double sales{ 0.0 };
     string department;
     string level;
-    double totleSales{ 0.0 };
-    StaffType type{ TUnknown };
+    double totalSales{ 0.0 };
 };
 

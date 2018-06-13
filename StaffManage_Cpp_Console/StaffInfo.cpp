@@ -42,7 +42,7 @@ StaffInfo::StaffInfo(const SalesManager & salesManager):
     sales(salesManager.sales),
     department(salesManager.department),
     level(salesManager.level),
-    totleSales(salesManager.totalSales),
+    totalSales(salesManager.totalSales),
     type(TSalesManager)
 {
 }
@@ -65,11 +65,58 @@ StaffInfo::StaffInfo(
     sales(s),
     department(d),
     level(l),
-    totleSales(t),
+    totalSales(t),
     type(ty)
 {
 }
 
 StaffInfo::~StaffInfo()
 {
+}
+
+void StaffInfo::Print()
+{
+    switch (type)
+    {
+    case TUnknown:
+        cout << "Unknown" << endl;
+        break;
+    case TStaff:
+        cout << "Staff" << endl;
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        break;
+    case TSalesman:
+        cout << "Salesman" << endl;
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Major: " << major << endl;
+        cout << "Sales: " << sales << endl;
+        break;
+    case TManager:
+        cout << "Manager" << endl;
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Department: " << department << endl;
+        cout << "Level: " << level << endl;
+        break;
+    case TSalesManager:
+        cout << "SalesManager" << endl;
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Major: " << major << endl;
+        cout << "Sales: " << sales << endl;
+        cout << "Department: " << department << endl;
+        cout << "Level: " << level << endl;
+        cout << "Total sales: " << totalSales << endl;
+        break;
+    default:
+        cout << "Unknown Error" << endl;
+        break;
+    }
+    cout << endl;
 }

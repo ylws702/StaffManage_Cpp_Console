@@ -42,7 +42,7 @@ void StaffList::Insert(const SalesManager & salesManager)
 StaffInfo StaffList::Find(const string & id)
 {
     auto p = staffMap.find(id);
-    if (staffMap.end()==p)
+    if (staffMap.end() == p)
     {
         return StaffInfo();
     }
@@ -54,7 +54,7 @@ list<StaffInfo> StaffList::FindName(const string & name)
     list<StaffInfo> result;
     for (auto i = staffMap.begin(); i != staffMap.end(); i++)
     {
-        if (i->second.name==name)
+        if (i->second.name == name)
         {
             result.push_back(i->second);
         }
@@ -67,7 +67,9 @@ list<StaffInfo> StaffList::FindMajor(const string & major)
     list<StaffInfo> result;
     for (auto i = staffMap.begin(); i != staffMap.end(); i++)
     {
-        if (i->second.major == major)
+        if (i->second.major == major
+            && (StaffInfo::TSalesman == i->second.type
+                || StaffInfo::TSalesManager == i->second.type))
         {
             result.push_back(i->second);
         }
@@ -80,7 +82,9 @@ list<StaffInfo> StaffList::FindLevel(const string & level)
     list<StaffInfo> result;
     for (auto i = staffMap.begin(); i != staffMap.end(); i++)
     {
-        if (i->second.level == level)
+        if (i->second.level == level
+            && (StaffInfo::TManager == i->second.type
+                || StaffInfo::TSalesManager == i->second.type))
         {
             result.push_back(i->second);
         }
@@ -93,7 +97,9 @@ list<StaffInfo> StaffList::FindDepartment(const string & department)
     list<StaffInfo> result;
     for (auto i = staffMap.begin(); i != staffMap.end(); i++)
     {
-        if (i->second.department == department)
+        if (i->second.department == department
+            && (StaffInfo::TManager == i->second.type
+                || StaffInfo::TSalesManager == i->second.type))
         {
             result.push_back(i->second);
         }
@@ -148,7 +154,7 @@ bool StaffList::Save(const string & path)
         f.write(
             (char *)&p.second.age,
             sizeof(unsigned short)
-            );
+        );
 
         length = p.second.major.size();
         f.write((char *)&length, sizeof(int));
@@ -164,7 +170,7 @@ bool StaffList::Save(const string & path)
         f.write((char *)&length, sizeof(int));
         f.write((char *)&p.second.level[0], length);
 
-        f.write((char *)&p.second.totleSales, sizeof(double));
+        f.write((char *)&p.second.totalSales, sizeof(double));
 
         f.write(
             (char *)&p.second.type,
@@ -240,6 +246,6 @@ bool StaffList::Read(const string & path)
         );
         num++;
     }
-    cout <<  num << " staff(s) successfully read." << endl;
+    cout << num << " staff(s) successfully read." << endl;
     return true;
 }
