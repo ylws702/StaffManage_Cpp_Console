@@ -125,14 +125,121 @@ bool StaffList::Remove(const string & id)
     return true;
 }
 
-//pair<Staff*, StaffList::StaffType> StaffList::Find(const string & id)
-//{
-//    auto staff = staffMap.find(id);
-//    if (staffMap.end()==staff)
-//    {
-//        return pair<Staff*, StaffList::StaffType>(nullptr,TStaff);
-//    }
-//    *(staff->second.first);
-//    auto p=new Staff
-//    return pair<Staff*, StaffType>();
-//}
+bool StaffList::Save(const string & path)
+{
+    ofstream f(path, ios::binary);
+    int length;
+    string str;
+    if (f.fail())
+    {
+        cout << "Cannot open " << path << " !" << endl;
+        return false;
+    }
+    for (auto p : staffMap)
+    {
+        length = p.second.id.size();
+        f.write((char *)&length, sizeof(int));
+        f.write((char *)&p.second.id[0], length);
+
+        length = p.second.name.size();
+        f.write((char *)&length, sizeof(int));
+        f.write((char *)&p.second.name[0], length);
+
+        f.write(
+            (char *)&p.second.age,
+            sizeof(unsigned short)
+            );
+
+        length = p.second.major.size();
+        f.write((char *)&length, sizeof(int));
+        f.write((char *)&p.second.major[0], length);
+
+        f.write((char *)&p.second.sales, sizeof(double));
+
+        length = p.second.department.size();
+        f.write((char *)&length, sizeof(int));
+        f.write((char *)&p.second.department[0], length);
+
+        length = p.second.level.size();
+        f.write((char *)&length, sizeof(int));
+        f.write((char *)&p.second.level[0], length);
+
+        f.write((char *)&p.second.totleSales, sizeof(double));
+
+        f.write(
+            (char *)&p.second.type,
+            sizeof(StaffInfo::StaffType)
+        );
+    }
+    f.close();
+    cout << "Data successfully saved!" << endl;
+    return true;
+}
+
+bool StaffList::Read(const string & path)
+{
+    ifstream f;
+    int length;
+    int num = 0;
+    string id;
+    string name;
+    unsigned short age{ 0 };
+    string major;
+    double sales{ 0.0 };
+    string department;
+    string level;
+    double totleSales{ 0.0 };
+    StaffInfo::StaffType type{ StaffInfo::TUnknown };
+    f.open(path, ios::binary);
+    if (f.fail())
+    {
+        cout << "Cannot open " << path << " !" << endl;
+        return false;
+    }
+    while (!f.read((char *)&length, sizeof(int)).eof())
+    {
+        id.resize(length);
+        f.read((char *)&id[0], length);
+
+        f.read((char *)&length, sizeof(int));
+        name.resize(length);
+        f.read((char *)&name[0], length);
+
+        f.read((char *)&age, sizeof(unsigned short));
+
+        f.read((char *)&length, sizeof(int));
+        major.resize(length);
+        f.read((char *)&major[0], length);
+
+        f.read((char *)&sales, sizeof(double));
+
+        f.read((char *)&length, sizeof(int));
+        department.resize(length);
+        f.read((char *)&department[0], length);
+
+        f.read((char *)&length, sizeof(int));
+        level.resize(length);
+        f.read((char *)&level[0], length);
+
+        f.read((char *)&age, sizeof(unsigned short));
+
+        f.read((char *)&type, sizeof(StaffInfo::StaffType));
+        staffMap.emplace(
+            id,
+            StaffInfo(
+                id,
+                name,
+                age,
+                major,
+                sales,
+                department,
+                level,
+                age,
+                type
+            )
+        );
+        num++;
+    }
+    cout <<  num << " staff(s) successfully read." << endl;
+    return true;
+}

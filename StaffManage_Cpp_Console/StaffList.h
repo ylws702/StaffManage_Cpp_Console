@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <list>
+#include <fstream>
 #include "StaffInfo.h"
 using namespace std;
 class StaffList
@@ -19,6 +20,8 @@ public:
     list<StaffInfo> FindDepartment(const string& department);
     list<StaffInfo> FindType(StaffInfo::StaffType type);
     bool Remove(const string& id);
+    bool Save(const string& path);
+    bool Read(const string& path);
 private:
     map<string, StaffInfo> staffMap;
 };

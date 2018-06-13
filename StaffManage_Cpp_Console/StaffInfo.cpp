@@ -48,6 +48,28 @@ StaffInfo::StaffInfo(const SalesManager & salesManager):
 }
 
 
+StaffInfo::StaffInfo(
+    string i,
+    string n,
+    unsigned short a,
+    string m,
+    double s,
+    string d,
+    string l,
+    double t,
+    StaffType ty) :
+    id(i),
+    name(n),
+    age(a),
+    major(m),
+    sales(s),
+    department(d),
+    level(l),
+    totleSales(t),
+    type(ty)
+{
+}
+
 StaffInfo::~StaffInfo()
 {
 }

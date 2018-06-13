@@ -1,14 +1,15 @@
 #pragma once
+#include <fstream>
 #include "Staff.h"
 class StaffInfo
 {
+    friend class StaffList;
 public:
     StaffInfo();
     StaffInfo(const Staff& staff);
     StaffInfo(const Salesman& salesman);
     StaffInfo(const Manager& manger);
     StaffInfo(const SalesManager& salesManager);
-    ~StaffInfo();
     enum StaffType
     {
         TUnknown,
@@ -17,6 +18,19 @@ public:
         TManager,
         TSalesManager
     };
+    StaffInfo(
+        string id,
+        string name,
+        unsigned short age,
+        string major,
+        double sales,
+        string department,
+        string level,
+        double totleSales,
+        StaffType type
+    );
+    ~StaffInfo();
+private:
     string id;
     string name;
     unsigned short age{ 0 };
